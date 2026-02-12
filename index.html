@@ -1,45 +1,364 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <title>Your Name - Resume</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Your Name — Systems Administrator / DevOps</title>
+  <meta name="description" content="Systems Administrator / DevOps resume: AWS, Linux, CI/CD, Docker, Terraform, monitoring, security." />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Your Name — Systems Administrator / DevOps" />
+  <meta property="og:description" content="Resume + projects + contact." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourdomain.com/" />
+
+  <!-- Simple, clean styling -->
   <style>
-    body {font-family: Arial; max-width: 800px; margin: 40px auto; padding: 20px; line-height:1.6;}
-    h1 {color:#2c3e50;}
-    a {color:#0366d6;}
-    .card {background:#f4f4f4; padding:20px; border-radius:10px; margin:20px 0;}
+    :root{
+      --bg:#0b1020;
+      --panel:#0f1733;
+      --card:#121c3d;
+      --text:#e8ecff;
+      --muted:#a9b3da;
+      --accent:#74c0fc;
+      --accent2:#b197fc;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius:18px;
+      --max: 980px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(1000px 600px at 20% 0%, rgba(116,192,252,.20), transparent 60%),
+        radial-gradient(900px 500px at 80% 10%, rgba(177,151,252,.18), transparent 60%),
+        linear-gradient(180deg, var(--bg), #070a14);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 80px}
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; margin-bottom:18px;
+    }
+    .brand{
+      display:flex; gap:12px; align-items:center;
+      padding:10px 14px; border:1px solid var(--border);
+      background:rgba(255,255,255,.03); border-radius:999px;
+      box-shadow: var(--shadow);
+    }
+    .dot{
+      width:12px; height:12px; border-radius:50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 18px rgba(116,192,252,.45);
+    }
+    .nav{
+      display:flex; flex-wrap:wrap; gap:10px; justify-content:flex-end;
+    }
+    .chip{
+      padding:10px 12px; border-radius:999px; border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+    }
+    .chip:hover{background:rgba(255,255,255,.06)}
+    header{
+      margin-top:18px;
+      padding:26px;
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .headline{
+      display:flex; flex-direction:column; gap:10px;
+    }
+    h1{
+      margin:0;
+      font-size: clamp(28px, 4vw, 44px);
+      letter-spacing:-.02em;
+    }
+    .role{
+      font-size: clamp(14px, 2vw, 18px);
+      color: var(--muted);
+    }
+    .cta{
+      margin-top:16px;
+      display:flex; flex-wrap:wrap; gap:10px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:11px 14px; border-radius: 12px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      text-decoration:none;
+    }
+    .btn strong{font-weight:650}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(116,192,252,.22), rgba(177,151,252,.18));
+      border-color: rgba(116,192,252,.35);
+    }
+    .btn:hover{background:rgba(255,255,255,.07); text-decoration:none}
+    main{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
+    }
+    @media (max-width: 880px){
+      main{grid-template-columns:1fr}
+      .topbar{flex-direction:column; align-items:flex-start}
+      .nav{justify-content:flex-start}
+    }
+    .card{
+      background: rgba(255,255,255,.03);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+    .card h2{
+      margin:0 0 10px 0;
+      font-size:18px;
+      letter-spacing:-.01em;
+    }
+    .muted{color:var(--muted)}
+    .kicker{
+      display:flex; flex-wrap:wrap; gap:8px; margin-top:10px
+    }
+    .pill{
+      font-size: 13px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      white-space:nowrap;
+    }
+    .section{display:flex; flex-direction:column; gap:16px}
+    .job{
+      padding:14px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background: rgba(0,0,0,.15);
+    }
+    .jobhead{display:flex; flex-wrap:wrap; gap:10px; align-items:baseline; justify-content:space-between}
+    .jobtitle{font-weight:700}
+    .jobmeta{color:var(--muted); font-size:13px}
+    ul{margin:10px 0 0 18px}
+    li{margin:6px 0}
+    .proj{
+      display:grid; gap:10px;
+      padding:14px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background: rgba(0,0,0,.15);
+    }
+    .projtop{display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between}
+    .projname{font-weight:750}
+    footer{
+      margin-top:22px;
+      color:var(--muted);
+      font-size:13px;
+      text-align:center;
+    }
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
+    .hr{
+      height:1px; background: var(--border); margin:12px 0;
+    }
   </style>
+
+  <!-- Structured data (helps search + rich results a bit) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Your Name",
+    "jobTitle":"Systems Administrator / DevOps",
+    "url":"https://yourdomain.com",
+    "sameAs":[
+      "https://www.linkedin.com/in/YOURHANDLE",
+      "https://github.com/YOURHANDLE"
+    ]
+  }
+  </script>
 </head>
+
 <body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <div class="dot" aria-hidden="true"></div>
+        <div>
+          <div style="font-weight:750">Your Name</div>
+          <div class="muted" style="font-size:13px">Systems Administrator • DevOps • AWS</div>
+        </div>
+      </div>
+      <div class="nav">
+        <a class="chip" href="#experience">Experience</a>
+        <a class="chip" href="#projects">Projects</a>
+        <a class="chip" href="#skills">Skills</a>
+        <a class="chip" href="#contact">Contact</a>
+      </div>
+    </div>
 
-<h1>Your Name</h1>
-<p>Systems Administrator • DevOps • Cloud</p>
+    <header>
+      <div class="headline">
+        <h1>Systems Administrator / DevOps</h1>
+        <div class="role">
+          I build reliable infrastructure: Linux, AWS, CI/CD, automation, monitoring, and security hardening.
+        </div>
+        <div class="kicker">
+          <span class="pill">AWS • VPC • IAM • EC2 • ECS</span>
+          <span class="pill">Linux • Networking • DNS</span>
+          <span class="pill">Docker • Nginx • TLS</span>
+          <span class="pill">CI/CD • GitHub Actions</span>
+          <span class="pill">Terraform (optional)</span>
+          <span class="pill">Monitoring • Logging</span>
+        </div>
+        <div class="cta">
+          <a class="btn primary" href="#contact"><strong>Hire / Contact</strong> →</a>
+          <a class="btn" href="mailto:you@email.com">you@email.com</a>
+          <a class="btn" href="https://www.linkedin.com/in/YOURHANDLE" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="btn" href="https://github.com/YOURHANDLE" target="_blank" rel="noreferrer">GitHub</a>
+          <!-- Optional: upload your PDF resume into the repo and link it here -->
+          <a class="btn" href="/resume.pdf">Download PDF</a>
+        </div>
+      </div>
+    </header>
 
-<div class="card">
-<h2>About Me</h2>
-<p>Short professional summary here.</p>
-</div>
+    <main>
+      <!-- Left column -->
+      <div class="section">
+        <div class="card" id="experience">
+          <h2>Experience</h2>
 
-<div class="card">
-<h2>Skills</h2>
-<ul>
-<li>AWS / Linux / Docker</li>
-<li>CI/CD</li>
-<li>Networking / Security</li>
-</ul>
-</div>
+          <div class="job">
+            <div class="jobhead">
+              <div class="jobtitle">Systems Administrator / DevOps • Company Name</div>
+              <div class="jobmeta">City, ST • 20XX–Present</div>
+            </div>
+            <ul>
+              <li>Owned uptime and performance for <span class="mono">N</span> services across Linux servers and cloud infrastructure.</li>
+              <li>Automated deployments with <span class="mono">CI/CD</span> (GitHub Actions), reducing release time by <span class="mono">X%</span>.</li>
+              <li>Implemented centralized logging/metrics (e.g., CloudWatch/Prometheus/Grafana) to cut incident MTTR.</li>
+              <li>Hardened security: IAM least-privilege, patching, backups, MFA, secrets handling.</li>
+            </ul>
+          </div>
 
-<div class="card">
-<h2>Experience</h2>
-<p>Job history here.</p>
-</div>
+          <div class="job" style="margin-top:12px">
+            <div class="jobhead">
+              <div class="jobtitle">Computer Support Technician • Company Name</div>
+              <div class="jobmeta">City, ST • 20XX–20XX</div>
+            </div>
+            <ul>
+              <li>Provided high-volume technical support across hardware/software/phone/email with strong customer outcomes.</li>
+              <li>Documented fixes and improved workflows, boosting team consistency and resolution quality.</li>
+            </ul>
+          </div>
 
-<div class="card">
-<h2>Contact</h2>
-<p>Email: you@email.com</p>
-<p>LinkedIn: <a href="#">Profile</a></p>
-</div>
+          <div class="hr"></div>
+          <div class="muted" style="font-size:13px">
+            Tip: Keep bullets impact-focused: <span class="mono">action + tech + result</span>.
+          </div>
+        </div>
 
+        <div class="card" id="projects">
+          <h2>Projects</h2>
+
+          <div class="proj">
+            <div class="projtop">
+              <div class="projname">AWS ECS (EC2) Deployment + Custom Domain + Nginx TLS</div>
+              <div class="jobmeta"><a href="#" target="_blank" rel="noreferrer">Repo / Write-up</a></div>
+            </div>
+            <div class="muted">
+              Containerized app behind load balancing with a custom domain, automated TLS, and a repeatable deployment pattern.
+            </div>
+            <div class="kicker">
+              <span class="pill">ECS (EC2)</span><span class="pill">ALB</span><span class="pill">Route/DNS</span>
+              <span class="pill">Nginx</span><span class="pill">Certbot</span><span class="pill">CloudWatch</span>
+            </div>
+            <ul>
+              <li>Built ECS service with rolling deploy strategy and health checks.</li>
+              <li>Mapped domain to load balancer and enforced HTTPS end-to-end.</li>
+              <li>Documented setup for repeatability (README + diagrams).</li>
+            </ul>
+          </div>
+
+          <div class="proj" style="margin-top:12px">
+            <div class="projtop">
+              <div class="projname">Homelab Monitoring + Backups</div>
+              <div class="jobmeta"><a href="#" target="_blank" rel="noreferrer">Notes</a></div>
+            </div>
+            <div class="muted">Practical monitoring and backup routines that mirror production disciplines.</div>
+            <div class="kicker">
+              <span class="pill">Linux</span><span class="pill">Docker</span><span class="pill">Grafana</span>
+              <span class="pill">Prometheus</span><span class="pill">Backups</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right column -->
+      <div class="section">
+        <div class="card" id="skills">
+          <h2>Skills</h2>
+          <div class="kicker">
+            <span class="pill">Linux Admin</span>
+            <span class="pill">AWS</span>
+            <span class="pill">Networking</span>
+            <span class="pill">DNS</span>
+            <span class="pill">Docker</span>
+            <span class="pill">Nginx</span>
+            <span class="pill">TLS/SSL</span>
+            <span class="pill">CI/CD</span>
+            <span class="pill">Git</span>
+            <span class="pill">Scripting</span>
+            <span class="pill">Monitoring</span>
+            <span class="pill">Incident Response</span>
+            <span class="pill">Security Hardening</span>
+          </div>
+
+          <div class="hr"></div>
+          <div class="muted" style="font-size:13px">
+            Optional: add certifications here (AWS CCP, SAA, Security+, etc.).
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Highlights</h2>
+          <ul>
+            <li>Reliable operations mindset: backups, patching, least privilege, observability.</li>
+            <li>Clear communicator: runbooks, documentation, and user-friendly support.</li>
+            <li>Comfortable owning systems end-to-end.</li>
+          </ul>
+        </div>
+
+        <div class="card" id="contact">
+          <h2>Contact</h2>
+          <div><strong>Email:</strong> <a href="mailto:you@email.com">you@email.com</a></div>
+          <div><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/YOURHANDLE" target="_blank" rel="noreferrer">linkedin.com/in/YOURHANDLE</a></div>
+          <div><strong>GitHub:</strong> <a href="https://github.com/YOURHANDLE" target="_blank" rel="noreferrer">github.com/YOURHANDLE</a></div>
+          <div style="margin-top:10px" class="muted">
+            Want a contact form? Use a free service like Formspree (optional).
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div>© <span id="y"></span> Your Name • Built with GitHub Pages</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
 
