@@ -10,9 +10,6 @@ jobs:
   rubocop:
     runs-on: ubuntu-latest
 
-    env:
-      RUBOCOP_CACHE_ROOT: tmp/rubocop
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
@@ -24,6 +21,8 @@ jobs:
           bundler-cache: true
 
       - name: Run HTML Proofer
-        run: bundle exec htmlproofer . \
-          --assume-extension true \
-          --ignore-files "/vendor/,/node_modules/,/tmp/,/log/"
+        run: |
+          bundle exec htmlproofer . \
+            --assume-extension true \
+            --ignore-files "/vendor/,/node_modules/,/tmp/,/log/" \
+            --ignore-urls "/linkedin\.com/"

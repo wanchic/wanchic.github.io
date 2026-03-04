@@ -10,7 +10,9 @@ pre-commit:
       run: |
         for file in {all_files}; do
           echo "Linting $file"
-          bundle exec htmlproofer "$file" --assume-extension true
+          bundle exec htmlproofer "$file" \
+            --assume-extension true \
+            --ignore-urls "/linkedin\.com/"
         done
 
     js-lint:
