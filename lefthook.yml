@@ -1,0 +1,28 @@
+pre-commit:
+  parallel: true
+  commands:
+    css-lint:
+      glob: "*.{css,scss,sass}"
+      run: npx --no-install stylelint -f verbose --fix {all_files}
+
+    html-lint:
+      glob: "*.{html}"
+      run: |
+        for file in {all_files}; do
+          echo "Linting $file"
+          bundle exec htmlproofer "$file" \
+            --assume-extension true \
+            --ignore-urls "/linkedin\.com/"
+        done
+
+    js-lint:
+      glob: "*.{js,mjs,cjs}"
+      run: npx --no-install eslint {all_files}
+
+    markdown-lint:
+      glob: "*.md"
+      run: bundle exec mdl {all_files}
+
+    yaml-lint:
+      glob: "*.{yml,yaml}"
+      run: yamllint {all_files}

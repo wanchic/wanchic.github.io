@@ -1,0 +1,28 @@
+name: 🧹 HTML (htmlproofer)
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  rubocop:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
+
+      - name: Run HTML Proofer
+        run: |
+          bundle exec htmlproofer . \
+            --assume-extension true \
+            --ignore-files "/vendor/,/node_modules/,/tmp/,/log/" \
+            --ignore-urls "/linkedin\.com/"

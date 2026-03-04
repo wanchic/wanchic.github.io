@@ -1,2 +1,4 @@
 # ruby-mine
 /.idea*
+
+/node_modules
