@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
+# Keep these out of indexes (optional)
+Disallow: /tmp/
+Disallow: /private/
+
+# Your sitemap
 Sitemap: https://eric.wanchic.com/sitemap.xml

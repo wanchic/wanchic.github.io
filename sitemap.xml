@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <url>
-    <loc>https://eric.wanchic.com</loc>
-  </url>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <url>
-    <loc>https://aws.wanchic.com</loc>
-  </url>
+  <sitemap>
+    <loc>https://eric.wanchic.com/sitemap-static.xml</loc>
+    <lastmod>2026-03-04</lastmod>
+  </sitemap>
 
-  <url>
-    <loc>https://azure.wanchic.com</loc>
-  </url>
+  <sitemap>
+    <loc>https://aws.wanchic.com/sitemap.xml</loc>
+    <lastmod>2026-03-04</lastmod>
+  </sitemap>
 
-  <url>
-    <loc>https://google.wanchic.com</loc>
-  </url>
+  <sitemap>
+    <loc>https://azure.wanchic.com/sitemap.xml</loc>
+    <lastmod>2026-03-04</lastmod>
+  </sitemap>
 
-</urlset>
+  <sitemap>
+    <loc>https://google.wanchic.com/sitemap.xml</loc>
+    <lastmod>2026-03-04</lastmod>
+  </sitemap>
+
+</sitemapindex>
